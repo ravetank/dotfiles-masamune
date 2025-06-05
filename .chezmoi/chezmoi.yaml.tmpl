@@ -1,0 +1,39 @@
+# ~/.config/chezmoi/chezmoi.yaml.tmpl
+
+# This file is a chezmoi configuration template
+# It uses Go templating to dynamically control dotfile behavior
+# You can override this with per-host, per-user, or conditional logic
+
+sourceDir: "{{ .chezmoi.sourceDir | default "dotfiles-masamune" }}"
+
+# Map machine-specific settings
+# Use `chezmoi data` to preview these values
+data:
+  isMasamune: {{ eq .chezmoi.hostname "MASAMUNE" }}
+  isExcalibur: {{ eq .chezmoi.hostname "EXCALIBUR" }}
+  isBedroomPC: {{ eq .chezmoi.hostname "EXCALIBUR" }}
+  isWSL: {{ .chezmoi.isWSL }}
+  isWin: {{ .chezmoi.os == "windows" }}
+  isLinux: {{ .chezmoi.os == "linux" }}
+
+  user: {{ .chezmoi.user }}
+  hostname: {{ .chezmoi.hostname }}
+  home: {{ .chezmoi.homeDir }}
+
+  gitUsername: "ravetank"
+  githubURL: "https://github.com/ravetank/dotfiles-masamune"
+
+# Ignore sensitive files from sync
+# Add real secrets to .chezmoiignore
+# This keeps you from leaking tokens while you're being adorable on GitHub
+template:
+  options:
+    missingKey: error
+    delims:
+      left: "{{"
+      right: "}}"
+
+# Windows support: use native paths when needed
+# You can even define per-platform logic in your templates like:
+# {{ if .isWin }} use windows config path {{ end }}
+
