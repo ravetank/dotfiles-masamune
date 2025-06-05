@@ -1,22 +1,23 @@
-# 💾 dotfiles-masamune
+# 🎛️ dotfiles-masamune
 
-**✨ Personal configuration repository for MASAMUNE — my main bimbo-optimized workstation.**  
-This repo stores all essential config files, registry tweaks, themes, and tooling needed to fully restore or migrate my setup.
+**Configuration repository for MASAMUNE — a high-performance audio production and development workstation built by Jacksonstrut.**
 
-> 💄 Because even a beast of a PC deserves to look cute while slaying.
+This repo contains curated configuration files, registry tweaks, streaming scripts, AI tools, and shell setups used to maintain a clean, fast, and resilient Windows/WSL2 hybrid environment. Optimized for music production, live streaming, Python/LLM development, and system efficiency.
+
+> 🎚️ Precision-tuned configs, built to perform — just like a tight house mix.
 
 ---
 
-## 📁 Folder Structure
+## 📁 Structure
 
 ```plaintext
 dotfiles-masamune/
-├── PowerShell/           # PowerShell profile, aliases, functions
-├── Notepad3/             # Notepad3.ini: custom fonts, themes, wrap prefs
-├── VSCode/               # Editor config, keybindings, extension list
-├── Scoop/                # Exported app list for Scoop reinstallation
-├── StreamerBot/          # Actions, triggers, and streaming automation
-├── SpeakerBot/           # Webhooks and LLM response rules
-├── Ollama/               # Custom modelfiles + usage scripts
-├── WindowsTweaks/        # .reg files for system lockdown and beautification
+├── PowerShell/           # Shell profile, aliases, functions
+├── Notepad3/             # Lightweight editor config
+├── VSCode/               # Editor settings, keybindings, extensions
+├── Scoop/                # Installed app list via Scoop
+├── StreamerBot/          # Exported streaming automation logic
+├── SpeakerBot/           # Custom Twitch bot logic (JSON)
+├── Ollama/               # Modelfiles + LLM prompt templates
+├── WindowsTweaks/        # Registry hardening and UI tweaks
 └── setup.ps1             # Optional auto-restore script
