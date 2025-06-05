@@ -1,0 +1,6 @@
+# Default ChezMoi config template
+data:
+  username: '{{ user }}'
+  hostname: '{{ hostname }}'
+  platform: '{{ os }}'
+  distro: '{{ if eq .os "linux" }}{{ (include "lsb_release -is" | trim) | lower }}{{ end }}'

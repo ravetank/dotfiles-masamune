@@ -1,0 +1,35 @@
+# This script ensures AFFiNE's data is redirected to Scoop's persist folder
+
+$source = "$env:APPDATA\AFFiNE"
+$target = "$env:USERPROFILE\scoop\persist\affine"
+
+Write-Host "🌸 Setting up AFFiNE symlink..."
+
+# Stop AFFiNE if running
+Get-Process -Name "AFFiNE*" -ErrorAction SilentlyContinue | Stop-Process -Force
+
+# Backup original if needed
+if (Test-Path $source -and -not (Test-Path "$source.bak")) {
+    Rename-Item $source "$source.bak"
+}
+
+# Ensure target exists
+if (-not (Test-Path $target)) {
+    New-Item -ItemType Directory -Path $target | Out-Null
+}
+
+# Move contents from backup if necessary
+if (Test-Path "$source.bak") {
+    Get-ChildItem "$source.bak" -Force | Move-Item -Destination $target -Force
+    Remove-Item "$source.bak" -Recurse -Force
+}
+
+# Remove original directory if still present
+if (Test-Path $source) {
+    Remove-Item $source -Recurse -Force
+}
+
+# Create junction
+New-Item -ItemType Junction -Path $source -Target $target -Force
+
+Write-Host "✅ AFFiNE symlink set: $source → $target"
